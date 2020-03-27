@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-<form method = "POST" action = "index.php" >
+<form method = "POST" action = "../../../index.php" >
 
 <input type ="email" name ="email">
 <input type ="password" name = "pd">
