@@ -11,9 +11,8 @@ include "./Core/Database.php";
 
 // var_dump($db);
 
-$app = new Core\Core(['db'=>$db]);
-$app->run($db);
-header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+// $app = new Core\Core(['db'=>$db]);
+// $app->run($db);
 
 // $exp = new UserController(['db'=>$db]);
 // $exp->indexAction($db);
@@ -24,8 +23,8 @@ header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 // $app3 = new Kokou() ;
 // $app3->run() ;
 
-// $app4 = new Amoudokpo() ;
-// $app4->run() ;
+$app4 = new Amoudokpo() ;
+$app4->run() ;
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     extract($_POST);
