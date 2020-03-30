@@ -9,31 +9,20 @@ class Router
     {
         self::$routes[$url] = $route ;
 
-        // var_dump($routes);
-
-        // var_dump($route);
+        // var_dump($route);   
         
     }
 
     public static function get($url){
 
-        // var_dump($_SERVER['REQUEST_URI']);
-         var_dump($routes);
-        // var_dump($url);
-        $a = explode('/',$url);
-        $class = $a[2];
-        // var_dump($class);
+        if (array_key_exists($url, self::$routes)) {
 
-        if (array_key_existes($class,self::$routes)) {
-
-            return true;
+            return self::$routes[$url];
 
         }else{
-            return false;
+
+            return null;
         }
-
-        
-
         // retourne un tableau associatif contenant
         // - le controller a instancier
         // - la methode du controller a appeler
