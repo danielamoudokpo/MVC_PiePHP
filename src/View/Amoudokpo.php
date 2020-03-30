@@ -1,6 +1,6 @@
 <?php
 $GLOBALS = $_SERVER['REQUEST_URI']; 
-echo $GLOBALS;
+// echo $GLOBALS;
 
 class Amoudokpo
 {

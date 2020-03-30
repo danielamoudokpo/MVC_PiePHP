@@ -2,7 +2,7 @@
 
 function my_autoloder($class){
 
-// $path = "./";
+$path = "./";
 
 // $extension = ".php";
 
@@ -27,7 +27,13 @@ elseif (is_file('./src/Model/'.$class.'.php')) {
 elseif (is_file('./src/View/'.$class.'.php')) {
     include './src/View/'.$class.'.php';
     // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;
-    var_dump ($GLOBALS); 
+    // var_dump ($GLOBALS); 
+}
+
+elseif (is_file('./src/View/User'.$class.'.php')) {
+    include './src/View/User'.$class.'.php';
+    // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;
+    // var_dump ($GLOBALS); 
 }
 
 }

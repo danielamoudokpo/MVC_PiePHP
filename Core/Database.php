@@ -1,11 +1,13 @@
 <?php
-
 $host = "localhost";
-$database = "meetic";
+$database = "MVC_PiePHP";
 $username = "root";
 $password = "daniel2014";
-$charset = "UTF-8";
 
-$db = new PDO ("mysql:host='.$host.';dbname ='.$database.';charset ='.$charset.'",$username,$password);
+try {
+    $db = new PDO('mysql:host='.$host.';dbname='.$database.';charset=utf8', $username,$password);
+} catch (\Throwable $th) {
+    throw $th;
+}
 
-echo 'hello';
+

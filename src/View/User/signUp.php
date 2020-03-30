@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 ?>
 <!DOCTYPE html>
@@ -16,6 +16,6 @@
 
 <button type="submit">login</button>
 
-</form> 
+</form>
 </body>
-</html> -->
+</html>

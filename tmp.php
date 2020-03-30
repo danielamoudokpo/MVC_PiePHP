@@ -1,4 +1,6 @@
-<?php   
+<?php  
+
+$a = "save";
 if (isset($_POST) && !empty($_POST['email']) && !empty($_POST['pd'])) {
     // var_dump($_POST);
     // var_dump($_SERVER);

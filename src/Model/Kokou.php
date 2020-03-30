@@ -1,5 +1,4 @@
 <?php
-
 class Kokou
 {
 public function run ()
