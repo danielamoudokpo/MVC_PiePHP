@@ -1,19 +1,20 @@
 <?php
 namespace Core ;
-
 // use Router;
+
+// use Core\Database;
 
 class Core 
 {
-
 public $db;
 
 public function __construct($args=[]){
     
     require_once ("src/routes.php");
+    
+    // require_once ("Database.php");
 
-    $this->$db = $args['db'];
- 
+    $this->$db = $args['db']; 
 }
 
 public function run ($db)
@@ -23,9 +24,10 @@ public function run ($db)
             $class = ucfirst($tab[2]).'Controller';
             $method = $tab[3].'Action';
 
+           
             //static
             if (($routes = Router::get('/'.$tab[2])) != null) {
-                echo "custome route found<br />";
+                echo "custom route found<br />";
                 $class = ucfirst($routes['controller']).'Controller';
                 $method = $routes['action'].'Action';
                 $controller = new $class;
@@ -51,4 +53,6 @@ public function run ($db)
 
         }
 }
+
+// var_dump($db);
 

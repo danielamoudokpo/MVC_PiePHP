@@ -1,8 +1,16 @@
 <?php
+// require ("Database.php");
 
-// namespace Core;
+// namespace Controller;    
 
-class UserController{
+use Core\Database;
+
+// use Core\Core;
+
+use Core\Controller;
+
+
+class UserController extends Controller {
 
     public $db;
 
@@ -26,17 +34,19 @@ class UserController{
             }
         echo "UserController/indexAction<br />";
     }
-
     // user/userpage
     public function userpageAction(){
         // display one user in particulair  
+
+        // var_dump($host);
         
         echo "UserController/userpageAction<br /> ";
     }
 
     public function addAction(){
         // add  
-        
-        echo "UserController/addAction<br /> ";
-    }
+        // echo "ddd";
+        $this->render("register");
+
+          }
 }

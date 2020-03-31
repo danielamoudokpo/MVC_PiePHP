@@ -11,11 +11,14 @@ include "./Core/Database.php";
 
 // var_dump($db);
 
-// $app = new Core\Core(['db'=>$db]);
-// $app->run($db);
+$app = new Core\Core(['db'=>$db]);
+$app->run($db);
 
 // $exp = new UserController(['db'=>$db]);
 // $exp->indexAction($db);
+
+// $app2 = new Controller\Daniel() ;
+// $app2->run() ;
 
 // $app2 = new Daniel() ;
 // $app2->run() ;
@@ -23,8 +26,8 @@ include "./Core/Database.php";
 // $app3 = new Kokou() ;
 // $app3->run() ;
 
-$app4 = new Amoudokpo() ;
-$app4->run() ;
+// $app4 = new Amoudokpo() ;
+// $app4->run() ;
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     extract($_POST);
