@@ -1,23 +1,29 @@
 <?php
 // require ("Database.php");
 
-// namespace Controller;    
+// namespace Controller; 
 
-use Core\Database;
+// var_dump($host);
 
-// use Core\Core;
+// use Core\Controller;
 
-use Core\Controller;
+// use Core\Database;
 
-class UserController extends Controller {
+class UserController extends Core\Database {
 
-    public $db;
+    // public static $db;
+    public static $r;
+    public static $p;
+    // var_dump($db);
+    public function __construct(){
 
-    public function __construct($args=[]){
-        $this->db = $args['db'];
+        // $db = static::getConnection();
+        $r = self::$host;
     }   
     // user/index
-    public function indexAction($db){
+    public function indexAction(){
+
+        // $db = Core\Database::getConnection();
         // display all user email
         $rqt = "SELECT email from users ";
 
@@ -36,7 +42,9 @@ class UserController extends Controller {
     // user/userpage
     public function userpageAction(){
         // display one user in particulair  
-        
+ 
+        echo $r;
+
         echo "UserController/userpageAction<br /> ";
     }
 

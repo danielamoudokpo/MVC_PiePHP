@@ -7,12 +7,16 @@ define ('BASE_URI',str_replace('\\','/',substr(__DIR__,strlen ($_SERVER ['DOCUME
 
 require_once(implode(DIRECTORY_SEPARATOR,['Core','autoload.php']));
 
-include "./Core/Database.php";
+// include "./Core/Database.php";
 
 // var_dump($db);
 
-$app = new Core\Core(['db'=>$db]);
-$app->run($db);
+// $app = new Core\Core(['db'=>$db]);
+// $app->run($db);
+
+$app = new Core\Core();
+$app->run();
+
 
 // $exp = new UserController(['db'=>$db]);
 // $exp->indexAction($db);

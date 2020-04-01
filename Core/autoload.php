@@ -30,10 +30,6 @@ elseif (is_file('./src/'.$good_class.'.php')) {
     include './src/'.$good_class.'.php';
     // echo PHP_EOL."./src/Model/".$class.".php".PHP_EOL;
 }
-elseif (is_file('./src/View/'.$class.'.php')) {
-    include './src/View/'.$class.'.php';
-    // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;
-}
 elseif (is_file('./src/'.$good_class.'.php')) {
     include './src/'.$good_class.'.php';
     // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;

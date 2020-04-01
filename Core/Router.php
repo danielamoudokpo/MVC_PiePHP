@@ -11,7 +11,7 @@ class Router
     }
 
     public static function get($url){
-
+        //  var_dump($route); 
         if (array_key_exists($url, self::$routes)) {
 
             return self::$routes[$url];
