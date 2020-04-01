@@ -9,7 +9,6 @@ use Core\Database;
 
 use Core\Controller;
 
-
 class UserController extends Controller {
 
     public $db;
@@ -37,8 +36,6 @@ class UserController extends Controller {
     // user/userpage
     public function userpageAction(){
         // display one user in particulair  
-
-        // var_dump($host);
         
         echo "UserController/userpageAction<br /> ";
     }

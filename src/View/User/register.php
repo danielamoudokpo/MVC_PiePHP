@@ -1,7 +1,6 @@
 
 
 <form method = "POST" action = "../../../index.php" >
-
 <input type ="email" name ="email">
 <input type ="password" name = "password">
 

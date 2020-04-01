@@ -1,7 +1,6 @@
 <?php
 namespace Core ;
 // use Router;
-
 // use Core\Database;
 
 class Core 

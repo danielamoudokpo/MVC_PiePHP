@@ -43,7 +43,6 @@
 // $f->connection($host ,$database ,$username ,$password);
 
 
-
 $host = "localhost";
 $database = "MVC_PiePHP";
 $username = "root";
