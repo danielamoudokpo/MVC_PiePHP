@@ -2,7 +2,7 @@
 namespace Core;  
 
 class Database{
-    public $db;
+    // public $db;
     public static $host = "localhost";
     public static $database= "MVC_PiePHP";
     public static $username= "root";
@@ -17,13 +17,13 @@ class Database{
 
     // }
 
-    public static function getConnection(){
+    public  function getConnection(){
 
-            self::$db = new PDO('mysql:host='.self::$host.';dbname='.self::$database.';charset=utf8', self::$username,self::$password);
+            $db = new \PDO('mysql:host='.self::$host.';dbname='.self::$database.';charset=utf8', self::$username,self::$password);
 
             // $db = new PDO('mysql:host='.$this->host.';dbname='.$this->database.';charset=utf8', $this->username,$this->password);
 
-            return self::$db;  
+            return $db;  
               
     } 
 }

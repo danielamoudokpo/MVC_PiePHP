@@ -9,23 +9,23 @@
 
 // use Core\Database;
 
-class UserController extends Core\Database {
+class UserController  {
     // public static $db;
     public static $r;
     public static $p;
     // var_dump($db);
     public function __construct(){
-        // $db = static::getConnection();
-        self::$r = self::$host;
+        $this->db = Core\Database::getConnection();
+        // self::$r = self::$host;
+         self::$r = Core\Database::$host;
     }   
     // user/index
     public function indexAction(){
-        $db = Core\Database::getConnection();
-
+        // $db = Core\Database::getConnection();
         // display all user email
         $rqt = "SELECT email from users ";
 
-        $send = $db->prepare($rqt);
+        $send = $this->db->prepare($rqt);
 
         $send->execute();
 
@@ -33,7 +33,7 @@ class UserController extends Core\Database {
 
        print_r($row);     
             foreach ($row as $value) {
-                // echo $value.'<br />';
+                echo $value.'<br />';
             }
         echo "UserController/indexAction<br />";
     }
