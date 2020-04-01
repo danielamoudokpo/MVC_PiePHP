@@ -10,20 +10,18 @@
 // use Core\Database;
 
 class UserController extends Core\Database {
-
     // public static $db;
     public static $r;
     public static $p;
     // var_dump($db);
     public function __construct(){
-
         // $db = static::getConnection();
-        $r = self::$host;
+        self::$r = self::$host;
     }   
     // user/index
     public function indexAction(){
+        $db = Core\Database::getConnection();
 
-        // $db = Core\Database::getConnection();
         // display all user email
         $rqt = "SELECT email from users ";
 
@@ -43,9 +41,9 @@ class UserController extends Core\Database {
     public function userpageAction(){
         // display one user in particulair  
  
-        echo $r;
+        echo self::$r;
 
-        echo "UserController/userpageAction<br /> ";
+        // echo "UserController/userpageAction<br /> ";
     }
 
     public function addAction(){
