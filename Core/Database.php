@@ -1,5 +1,9 @@
 <?php
+
+
+
 namespace Core;  
+
 
 class Database{
     // public $db;
@@ -8,37 +12,31 @@ class Database{
     public static $username= "root";
     public static $password= "daniel2014";
 
-    // public function __construct(){
+    public function __construct(){
 
-    //     $this->host = $host;
-    //     $this->database = $database;
-    //     $this->username = $username;
-    //     $this->password = $password;
+        $this->host = $host;
+        $this->database = $database;
+        $this->username = $username;
+        $this->password = $password;
 
-    // }
+    }
 
     public  function getConnection(){
 
             $db = new \PDO('mysql:host='.self::$host.';dbname='.self::$database.';charset=utf8', self::$username,self::$password);
 
-            // $db = new PDO('mysql:host='.$this->host.';dbname='.$this->database.';charset=utf8', $this->username,$this->password);
 
             return $db;  
               
     } 
 }
 
-// $host = "localhost";
-// $database = "MVC_PiePHP";
-// $username = "root";
-// $password = "daniel2014";
-
 // $f = new Database();
 // $f->getConnection();
 
 
 
-// $host = "localhost";
+//  $host = "localhost";
 // $database = "MVC_PiePHP";
 // $username = "root";
 // $password = "daniel2014";

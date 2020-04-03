@@ -1,13 +1,9 @@
 <?php
-// require ("Database.php");
+
 
 // namespace Controller; 
 
-// var_dump($host);
-
 // use Core\Controller;
-
-// use Core\Database;
 
 class UserController  {
     // public static $db;
@@ -21,8 +17,7 @@ class UserController  {
     }   
     // user/index
     public function indexAction(){
-        // $db = Core\Database::getConnection();
-        // display all user email
+       
         $rqt = "SELECT email from users ";
 
         $send = $this->db->prepare($rqt);
@@ -31,9 +26,9 @@ class UserController  {
 
         $row = $send->fetchAll(PDO::FETCH_OBJ);
 
-       print_r($row);     
+    //    print_r($row);     
             foreach ($row as $value) {
-                echo $value.'<br />';
+                 print_r ($value).'<br />';
             }
         echo "UserController/indexAction<br />";
     }
@@ -49,7 +44,14 @@ class UserController  {
     public function addAction(){
         // add  
         // echo "ddd";
-        $this->render("register");
+        // $this->render("register");
 
           }
+        
+    public function regiterAction(){
+            // add  
+            // echo "ddd";
+        $this->render("register");
+    
+              }
 }

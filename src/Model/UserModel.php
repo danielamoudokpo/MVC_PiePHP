@@ -3,8 +3,8 @@
 class UserModel
 {
     public $db;
-    public $email;
-    public $password;
+    private $email;
+    private $password;
 
     public function __construct($args=[]){
         $this->db = $args['db'];
