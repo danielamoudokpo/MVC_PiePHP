@@ -1,21 +1,24 @@
 <?php
 
-class UserModel
+class UserModel 
 {
-    public $db;
+    
     private $email;
     private $password;
 
     public function __construct($args=[]){
-        $this->db = $args['db'];
+        // $this->db = $args['db'];
         $this->email = $args['email'];
         $this->password = $args['password'];
+
+        $this->db = Core\Database::getConnection();
+
     }
 
-    public function create_user($db){
+    public function register_user(){
         $rqt = "INSERT INTO users (email,password) 
                 values (:mail,:pd)";
-        $send = $db->prepare($rqt);
+        $send = $this->db->prepare($rqt);
         $send->bindParam(":mail",$this->email);
         $send->bindParam(":pd",$this->password);
 

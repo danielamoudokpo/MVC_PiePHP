@@ -1,9 +1,5 @@
 <?php
-
-
-
 namespace Core;  
-
 
 class Database{
     // public $db;

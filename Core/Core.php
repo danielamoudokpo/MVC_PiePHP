@@ -9,11 +9,7 @@ public $db;
 
 public function __construct($args=[]){
     
-    require_once ("src/routes.php");
-    
-    // require_once ("Database.php");
-
-    // $this->$db = $args['db']; 
+    require_once ("src/routes.php"); 
 }
 
 public function run ()
@@ -21,26 +17,25 @@ public function run ()
    
             $tab = explode('/',$_SERVER['REQUEST_URI']);
             $class = ucfirst($tab[2]).'Controller';
-            $method = $tab[3].'Action';
-
-           
             //static
             if (($routes = Router::get('/'.$tab[2]))) {
-                // var_dump($url);
                 echo "custom route found<br />";
-                $class = ucfirst($routes['controller']).'Controller';
-                $method = $routes['action'].'Action';
-                $controller = new $class;
-                $controller->$method;
-            }
+                $class_static = ucfirst($routes['controller']).'Controller';
+                $method_static = $routes['action'].'Action';
+                $controller = new $class_static;
+                $controller->$method_static();
+
             // dynamic
-                 if(class_exists($class) === true){  
+            } 
+            else if(class_exists($class)){ 
                 $controller = new $class();
+                $method = $tab[3].'Action'; 
                 if (method_exists($controller,$method) === false) {
                     $method = 'indexAction';
                     $controller->$method();
                 }
                 else{ 
+                   
                     $controller = new $class();
                     $controller->$method();
                 }
@@ -53,6 +48,8 @@ public function run ()
 
         }
 }
+
+
 
 // var_dump($db);
 

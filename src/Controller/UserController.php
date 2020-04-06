@@ -1,19 +1,10 @@
 <?php
 
 
-// namespace Controller; 
-
-// use Core\Controller;
-
-class UserController  {
-    // public static $db;
-    public static $r;
-    public static $p;
-    // var_dump($db);
+class UserController extends Core\Controller   {
     public function __construct(){
+
         $this->db = Core\Database::getConnection();
-        // self::$r = self::$host;
-         self::$r = Core\Database::$host;
     }   
     // user/index
     public function indexAction(){
@@ -25,8 +16,6 @@ class UserController  {
         $send->execute();
 
         $row = $send->fetchAll(PDO::FETCH_OBJ);
-
-    //    print_r($row);     
             foreach ($row as $value) {
                  print_r ($value).'<br />';
             }
@@ -35,23 +24,17 @@ class UserController  {
     // user/userpage
     public function userpageAction(){
         // display one user in particulair  
- 
-        echo self::$r;
-
-        // echo "UserController/userpageAction<br /> ";
+        echo'userpage';
     }
 
     public function addAction(){
         // add  
-        // echo "ddd";
-        // $this->render("register");
-
+        echo "ddd";
           }
         
-    public function regiterAction(){
-            // add  
-            // echo "ddd";
+    public function registerAction(){ 
+
         $this->render("register");
     
-              }
+        }
 }

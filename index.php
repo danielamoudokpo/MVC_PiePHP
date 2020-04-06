@@ -35,9 +35,8 @@ $app->run();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     extract($_POST);
-    $app5 = new UserModel(['db'=>$db,'email'=>$email,'password'=>$password]);
-    $app5->create_user($db);
-    $app5 = run();
+    $app5 = new UserModel(['email'=>$email,'password'=>$password]);
+    $app5->register_user();
 }
 
 
