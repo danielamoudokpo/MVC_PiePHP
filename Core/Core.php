@@ -1,7 +1,6 @@
 <?php
 namespace Core ;
 // use Router;
-// use Core\Database;
 
 class Core 
 {
@@ -49,7 +48,4 @@ public function run ()
         }
 }
 
-
-
-// var_dump($db);
 

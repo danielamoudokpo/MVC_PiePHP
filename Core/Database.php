@@ -2,7 +2,6 @@
 namespace Core;  
 
 class Database{
-    // public $db;
     public static $host = "localhost";
     public static $database= "MVC_PiePHP";
     public static $username= "root";
@@ -26,15 +25,3 @@ class Database{
               
     } 
 }
-
-// $f = new Database();
-// $f->getConnection();
-
-
-
-//  $host = "localhost";
-// $database = "MVC_PiePHP";
-// $username = "root";
-// $password = "daniel2014";
-
-// $db = new PDO('mysql:host='.$host.';dbname='.$database.';charset=utf8', $username,$password);

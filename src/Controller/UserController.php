@@ -1,28 +1,19 @@
 <?php
+// namespace Controller;
 
-
-class UserController extends Core\Controller   {
+class UserController extends Core\Controller {
     public function __construct(){
 
         $this->db = Core\Database::getConnection();
     }   
     // user/index
-    public function indexAction(){
-       
-        $rqt = "SELECT email from users ";
-
-        $send = $this->db->prepare($rqt);
-
-        $send->execute();
-
-        $row = $send->fetchAll(PDO::FETCH_OBJ);
-            foreach ($row as $value) {
-                 print_r ($value).'<br />';
-            }
-        echo "UserController/indexAction<br />";
+    public function indexAction(){       
+    
+        $all = new UserModel($_POST);
+        $all->read(); 
     }
-    // user/userpage
     public function userpageAction(){
+        
         // display one user in particulair  
         echo'userpage';
     }
@@ -30,11 +21,17 @@ class UserController extends Core\Controller   {
     public function addAction(){
         // add  
         echo "ddd";
-          }
+    }
         
     public function registerAction(){ 
 
-        $this->render("register");
-    
-        }
+        $this->render("register"); 
+    }
+
+    public function createAction(){
+        // var_dump($_POST);
+        // extract($_POST);
+        $user = new UserModel($_POST);
+        $user->create();
+    }
 }

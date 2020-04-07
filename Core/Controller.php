@@ -6,16 +6,8 @@ class Controller {
 
     public static $_render;
 
-// public function __construct(){
-    
-//     // $this->render = $_render;
-//     $this->render('register');
-// }
-
 protected function render($view,$scope=[]) 
     {
-    //  var_dump(self::$_render);
-
     extract($scope) ;
     $f = implode(DIRECTORY_SEPARATOR,[dirname(__DIR__),'src','View',str_replace('Controller','',basename(get_class($this))),$view]).'.php';
 
@@ -37,5 +29,3 @@ protected function render($view,$scope=[])
     }
 
 }
-// echo "dd";
-// $l = new controller;

@@ -10,6 +10,8 @@
     <title> Pie PHP </title >
     </head>
     <body>
+    
+    <button>hello</button>
     <?=$view ?>
     </body>
     </html>

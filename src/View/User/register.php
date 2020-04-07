@@ -1,9 +1,13 @@
 
-<form method = "POST"  >
-<input type ="email" name ="email">
-<input type ="password" name = "password">
+<form method = "POST" Action = "create" >
 
-<button type="submit">Register</button>
+    <input type ="email" name ="email">
+
+    <input type ="password" name = "password">
+
+    <input type ='text' name ="id">
+
+    <button type="submit">Register</button>
 
 </form>
 
