@@ -16,10 +16,9 @@ class Database{
 
     }
 
-    public  function getConnection(){
+    public function getConnection(){
 
             $db = new \PDO('mysql:host='.self::$host.';dbname='.self::$database.';charset=utf8', self::$username,self::$password);
-
 
             return $db;  
               

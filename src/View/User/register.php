@@ -1,11 +1,11 @@
 
 <form method = "POST" Action = "create" >
 
-    <input type ="email" name ="email">
+   <label for="id">id <input type ='text' name ="id"></label>
 
-    <input type ="password" name = "password">
+   <label for="email"> email <input type ="email" name ="email"></label>
 
-    <input type ='text' name ="id">
+   <!-- <label for="password">paword <input type ="password" name = "password"></label> -->
 
     <button type="submit">Register</button>
 

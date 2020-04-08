@@ -31,7 +31,7 @@ class UserController extends Core\Controller {
     public function createAction(){
         // var_dump($_POST);
         // extract($_POST);
-        $user = new UserModel($_POST);
-        $user->create();
+        $user = new UserModel($_POST,"users");
+        $user->update();
     }
 }

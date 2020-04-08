@@ -3,25 +3,50 @@ namespace Core;
 
 class Entity {
 
-    // public $email;
-    // public $password;
-    public $orm;
-    public function __construct($args){
-        var_dump($args);
 
+    // public $orm;
+    public $table;
+    public $args;
+    public function __construct($args,$table){
+        // var_dump($args);
         $class = get_class($this);
+        // var_dump($class);
+        $this->table = $table;
         $this->orm = new ORM();
         $this->db = Database::getConnection();
-        // $this->args = $args;
-        if (array_key_exists("id",$args)){
 
-            $this->orm->read('users',$args['id']);
-            // ORM::read("users",$args['id']);
-        }else{
-            $this->email = $args['email'];
-            $this->password = $args['password'];
+        foreach ($args as $key => $value) {
+
+            $this->$key = $value;
+        } 
+        var_dump($this->email);
+        if (array_key_exists("id",$args) && strlen($this->id) > 0){
+
+           $tab = $this->orm->read('users',$this->id);
+           foreach ($tab as $key => $value) {
+            $this->$key = $value;
         }
-        // var_dump($args);
-        
+            // var_dump($tab);
+            // var_dump($this->email);
+            // var_dump($args);
+        }else{
+           
+            $this->args = $args; 
+            // var_dump($args);
+           
+        }
+       
+    }
+
+    public function  create(){
+
+
+        $this->orm->create($this->table,$this->args);
+
+    }
+
+    public function update(){
+
+        $this->orm->update($this->table,$this->id,$tab);
     }
 }

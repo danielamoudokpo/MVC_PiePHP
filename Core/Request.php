@@ -4,16 +4,13 @@
 
 class Request{
 
+    public $request;
+
 public function __construct(){
 
-}
-
-public function Post(){
-
-
+    $this->requeste = $_REQUEST;
 
 }
-public function Get(){
 
-}
+
 }

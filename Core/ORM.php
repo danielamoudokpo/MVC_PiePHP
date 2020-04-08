@@ -10,40 +10,56 @@ class ORM
     public function __construct(){
 
         $this->db = Database::getConnection();
-        $this->email = $email; 
-        $this->password = $password;
+        // $this->email = $email; 
+        // $this->password = $password;
 
     }
-    // public function create ( $email , $password ) {
+    public function create($table,$fields) {
+       
+        $columns = [];
+        $placeholder = [];
+        $val = [];
+        foreach($fields as $col => $value){
+            $columns[] = $col;
+            $placeholder[] = '?';
+            $val[] = $value;
+        }
+        $column_list = implode(',',$columns);
+        $placeholder_list = implode(',',$placeholder);
 
-    // }
+        $rqt = "INSERT INTO $table ($column_list)  VALUES ($placeholder_list)";
+            $send = $this->db->prepare($rqt);
+    }
 
     public function read($table,$id ) {
 
         $rqt = "SELECT * from $table where id = ?";
         $send = $this->db->prepare($rqt);
-        // $send->bindParam(':table',$table);
-        // $send->bindParam(':id',$id);
-
         $send->execute([$id]);
 
-        $row = $send->fetchAll(\PDO::FETCH_ASSOC);
-
-        var_dump($row);
-
+        $row = $send->fetch(\PDO::FETCH_ASSOC); 
+        
+        // var_dump($row); 
+        // echo "hello";
         return $row;
-
-
 
     }
 
-    // public function update ( $table , $id , $fields ) {
+    public function update ( $table , $id , $fields ) {
+        echo "bye";
+        var_dump($fields);
+       
+       
+       $rqt= "UPDATE $table
+        SET nom_colonne_1 = 'nouvelle valeur'
+        WHERE condition";
 
-    // }
+    }
 
-    // public function delete ( $table , $id ) {
+    public function delete ( $table , $id ) {
 
-    // }
+        
+    }
 
     // public function find ( $table , $params = array ( 'WHERE'=>'1','ORDER BY'=>'id ASC', 'LIMIT'=>'') ) {
 
