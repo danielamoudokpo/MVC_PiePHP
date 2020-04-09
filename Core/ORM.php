@@ -15,7 +15,7 @@ class ORM
 
     }
     public function create($table,$fields) {
-       
+
         $columns = [];
         $placeholder = [];
         $val = [];
@@ -28,7 +28,8 @@ class ORM
         $placeholder_list = implode(',',$placeholder);
 
         $rqt = "INSERT INTO $table ($column_list)  VALUES ($placeholder_list)";
-            $send = $this->db->prepare($rqt);
+        $send = $this->db->prepare($rqt);
+        $send->execute($val);
     }
 
     public function read($table,$id ) {
@@ -39,31 +40,30 @@ class ORM
 
         $row = $send->fetch(\PDO::FETCH_ASSOC); 
         
-        // var_dump($row); 
-        // echo "hello";
         return $row;
 
     }
 
-    public function update ( $table , $id , $fields ) {
-        echo "bye";
-        var_dump($fields);
-       
-       
-       $rqt= "UPDATE $table
-        SET nom_colonne_1 = 'nouvelle valeur'
-        WHERE condition";
-
+    public function update ( $table , $id , $fields ) {   
+        var_dump($id);
+        foreach ($fields as $key => $value) {
+        $rqt = "UPDATE $table SET $key = '$value' WHERE id = $id";
+        $send = $this->db->prepare($rqt);
+        $send->execute();
+            
+        } 
+           
     }
 
-    public function delete ( $table , $id ) {
-
-        
+    public function delete ($table ,$id ) {
+        $rqt = "DELETE FROM $table WHERE id = $id ";
+        $cooking = $this->db->prepare($rqt);
+        $cooking ->execute();
     }
 
-    // public function find ( $table , $params = array ( 'WHERE'=>'1','ORDER BY'=>'id ASC', 'LIMIT'=>'') ) {
+    public function find ( $table , $params = array ( 'WHERE'=>'1','ORDER BY'=>'id ASC', 'LIMIT'=>'') ) {
 
-    // }
+    }
 }
 
 // $orm = new ORM () ;

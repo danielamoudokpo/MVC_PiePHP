@@ -29,9 +29,14 @@ class UserController extends Core\Controller {
     }
 
     public function createAction(){
+        $new = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES,'UTF-8');
+        echo $new;
         // var_dump($_POST);
         // extract($_POST);
-        $user = new UserModel($_POST,"users");
-        $user->update();
+        $params = new Core\Request ;
+        $params->getQueryParams() ;
+        // var_dump($params);  
+        $user = new UserModel($params,"users");
+        // $user->update();
     }
 }

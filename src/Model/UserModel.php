@@ -9,25 +9,24 @@ class UserModel extends Core\Entity
     // public $password;
 
 
-    public function read(){
+    public function email_exit_check($email){
 
-        $rqt = "SELECT email from users ";
-        $send = $this->db->prepare($rqt);
-        $send->execute();
-        $row = $send->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($row as $value) {
-                 print_r ($value).'<br />';
-            }
-        // select email from users where id = 1;
+        $sql = 'SELECT id from users WHERE email = :email';
+        $req = $con->prepare($sql);
+        $req->bindParam(':email',$email);
+        $req->execute();
+    
+        $nbrRows = $req->rowCount();
+        if($nbrRows > 0){
+            echo"<br/> email is already used !";
+            exit();
+        }else {
+            echo 'success';
+            exit();
+        }
     }
 
-    public function update(){
-
-    }
-
-    public function delete(){
-
-    }
+   
 
 }
 

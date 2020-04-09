@@ -4,49 +4,58 @@ namespace Core;
 class Entity {
 
 
-    // public $orm;
+    public $orm;
     public $table;
-    public $args;
-    public function __construct($args,$table){
-        // var_dump($args);
+    public $params;
+    public $tab;
+    public $id;
+    public function __construct($params,$table){
+        // var_dump($params);
+        echo '<br>';
         $class = get_class($this);
         // var_dump($class);
         $this->table = $table;
         $this->orm = new ORM();
         $this->db = Database::getConnection();
-
-        foreach ($args as $key => $value) {
-
+        foreach ($params as $key => $value) {
             $this->$key = $value;
-        } 
-        var_dump($this->email);
-        if (array_key_exists("id",$args) && strlen($this->id) > 0){
-
+        }  
+            $this->id = 3; 
+        //  var_dump($this->id);
+        
+        if (count($params) == 1 && intval($this->id) && array_key_exists("id",$params) && strlen($this->id) > 0){
+            //  var_dump($this->id);
            $tab = $this->orm->read('users',$this->id);
+           $this->tab = $tab;
+           var_dump($tab);
            foreach ($tab as $key => $value) {
             $this->$key = $value;
-        }
-            // var_dump($tab);
-            // var_dump($this->email);
-            // var_dump($args);
+        }   
+            echo'oui';
         }else{
-           
-            $this->args = $args; 
-            // var_dump($args);
-           
+            $this->$params = $params; 
+            // echo 'non';
         }
        
     }
 
     public function  create(){
-
-
-        $this->orm->create($this->table,$this->args);
-
+        // var_dump($this->p$params);
+        $this->orm->create($this->table,$this->$params);
     }
 
     public function update(){
 
-        $this->orm->update($this->table,$this->id,$tab);
+        $this->orm->update($this->table,$this->id,$this->$params);
+    }
+
+    public function delete(){
+
+        $this->orm->delete($this->table,$this->id);
+
+    }
+    public function find ( $table , $params){
+
+        $this->orm->delete($this->table,$this->$params);
     }
 }
