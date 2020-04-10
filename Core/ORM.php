@@ -10,9 +10,6 @@ class ORM
     public function __construct(){
 
         $this->db = Database::getConnection();
-        // $this->email = $email; 
-        // $this->password = $password;
-
     }
     public function create($table,$fields) {
 
@@ -52,7 +49,7 @@ class ORM
         $send->execute();
             
         } 
-           
+
     }
 
     public function delete ($table ,$id ) {
@@ -61,15 +58,22 @@ class ORM
         $cooking ->execute();
     }
 
-    public function find ( $table , $params = array ( 'WHERE'=>'1','ORDER BY'=>'id ASC', 'LIMIT'=>'') ) {
+    public function find ( $table , $params = array ( 'WHERE'=>'1','ORDER BY'=>'id ASC', 'LIMIT'=>'1') ) {
+
+        $rqt = "SELECT * from $table";
+        foreach ($params as $key => $value) {
+
+            $rqt = $rqt .' '.$key.' ' .$value.' ' ;
+
+            $cooking = $this->db->prepare($rqt);
+
+            $cooking->execute();
+
+        }
+
+        $row = $cooking->fetchAll();
+
+        var_dump($row);
 
     }
-}
-
-// $orm = new ORM () ;
-
-// $orm ->create('articles',array('titre'=>"un super titre ",'content'=>'et voici une super article de blog ','author'=>'Rodrigue'));
-
-// $orm ->update('articles',1 ,array('titre' => "un super titre",'content'=>'et voici un super article de blog','author'=>' Rodrigue'));
-
-// $orm ->delete('articles',1) ;
+}   

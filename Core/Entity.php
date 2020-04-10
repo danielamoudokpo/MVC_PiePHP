@@ -9,11 +9,12 @@ class Entity {
     public $params;
     public $tab;
     public $id;
-    public function __construct($params,$table){
+    public function __construct($params){
         // var_dump($params);
         echo '<br>';
         $class = get_class($this);
-        // var_dump($class);
+        $table = strtolower(str_replace(substr($class,-5,5),"",$class)."s");
+
         $this->table = $table;
         $this->orm = new ORM();
         $this->db = Database::getConnection();
@@ -21,7 +22,6 @@ class Entity {
             $this->$key = $value;
         }  
             $this->id = 3; 
-        //  var_dump($this->id);
         
         if (count($params) == 1 && intval($this->id) && array_key_exists("id",$params) && strlen($this->id) > 0){
             //  var_dump($this->id);
@@ -29,11 +29,11 @@ class Entity {
            $this->tab = $tab;
            var_dump($tab);
            foreach ($tab as $key => $value) {
-            $this->$key = $value;
+            $this->key = $value;
         }   
             echo'oui';
         }else{
-            $this->$params = $params; 
+            $this->params = $params; 
             // echo 'non';
         }
        
@@ -41,12 +41,12 @@ class Entity {
 
     public function  create(){
         // var_dump($this->p$params);
-        $this->orm->create($this->table,$this->$params);
+        $this->orm->create($this->table,$this->params);
     }
 
     public function update(){
 
-        $this->orm->update($this->table,$this->id,$this->$params);
+        $this->orm->update($this->table,$this->id,$this->params);
     }
 
     public function delete(){
@@ -54,8 +54,10 @@ class Entity {
         $this->orm->delete($this->table,$this->id);
 
     }
-    public function find ( $table , $params){
+    public function find(){
 
-        $this->orm->delete($this->table,$this->$params);
+        $this->orm->find($this->table,$this->params);
     }
+
+ 
 }

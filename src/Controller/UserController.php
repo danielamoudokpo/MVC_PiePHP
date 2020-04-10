@@ -24,19 +24,23 @@ class UserController extends Core\Controller {
     }
         
     public function registerAction(){ 
-
+        
         $this->render("register"); 
     }
 
     public function createAction(){
-        $new = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES,'UTF-8');
-        echo $new;
-        // var_dump($_POST);
-        // extract($_POST);
-        $params = new Core\Request ;
-        $params->getQueryParams() ;
-        // var_dump($params);  
-        $user = new UserModel($params,"users");
-        // $user->update();
+
+        $obj = new Core\Request;
+        $params = $obj->getQueryParams();
+        // $email ="test@gmailr.com";
+        // var_dump(($params));
+        $r = ['WHERE'=>'id = 3'];
+        $user = new UserModel($r);
+        // $user->email_exit_check($email);
+      
+        $res = $user->find();
+
+        // var_dump($res);
+
     }
 }

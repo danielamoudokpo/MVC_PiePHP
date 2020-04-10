@@ -4,15 +4,17 @@
 
 class UserModel extends Core\Entity
 {
-    
-    // public $email;
-    // public $password;
 
+    public $relation = [
+        "has_many"=>[
+            array("table"=> "article","key"=> "user_id")
+        ]
+    ];
 
     public function email_exit_check($email){
 
         $sql = 'SELECT id from users WHERE email = :email';
-        $req = $con->prepare($sql);
+        $req = $this->db->prepare($sql);
         $req->bindParam(':email',$email);
         $req->execute();
     

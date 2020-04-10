@@ -3,9 +3,7 @@ namespace Core;
 
 class Request{
 
-
-
-    public  $request;
+    public  $request ;
 
     public function __construct()
     {
@@ -13,18 +11,14 @@ class Request{
     }
 
     public function getQueryParams(){
-        // var_dump($this->request);
 
         foreach ($this->request as $key => $value) {   
 
+            $value = trim($value);
            $value = htmlspecialchars($value);
            $value = stripslashes($value);
-           $value = trim($value);
 
-           var_dump($value);
            $this->request[$key] = $value;
-
-        //    var_dump($value);
         }
 
         // var_dump($this->request); 
