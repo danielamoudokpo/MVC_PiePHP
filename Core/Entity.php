@@ -66,23 +66,29 @@ class Entity {
                 }
                 else if($key == "many_to_many"){
                      if ( array_key_exists("table1",$value) && array_key_exists("table2",$value) ) {
+                         
                         $t1= $value["table1"];
                         $t2= $value["table2"];
+                        $newClass = '\Model\\'.ucfirst($t2."Model");
                         $tab1 = $value["table1"].'s';
                         $tab2 = $value["table2"].'s';
                         $t = $tab1.'_'.$tab2;
+                        $new_list = [];
                 
                         $prm = $this->orm->find($t,['WHERE'=>"user_id =".' '.$user_id]); 
                         foreach ($prm as $key => $value) {
                             
                             if ($key = $value["food_id"]) {
-                               
+
                                 $list = $this->orm->find($tab2,['WHERE'=>"id =".' '.$key]); 
+                                
                                 }
+                                array_push($new_list,$list);     
                         }
-                            $newClass = '\Model\\'.ucfirst($t2."Model");
-                            $many_to_many = new $newClass($list);
-                            // $many_to_many->affiche();
+
+                        $many_to_many = new $newClass($new_list);
+                        // $many_to_many->affiche();
+
                         
                     }
                     

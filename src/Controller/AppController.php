@@ -10,4 +10,13 @@ class AppController {
         echo 'action';
     }
 
+    public function deleteAction($id){
+
+        // echo $_SERVER['REQUEST_URI'];
+        
+        echo 'delete';
+
+        // var_dump($id);
+    }
+
 }
