@@ -26,14 +26,7 @@ elseif (is_file('./src/Model/'.$class.'.php')) {
     include './src/Model/'.$class.'.php';
     // echo PHP_EOL."./src/Model/".$class.".php".PHP_EOL;
 }
-elseif (is_file('./src/'.$good_class.'.php')) {
-    include './src/'.$good_class.'.php';
-    // echo PHP_EOL."./src/Model/".$class.".php".PHP_EOL;
-}
-elseif (is_file('./src/'.$good_class.'.php')) {
-    include './src/'.$good_class.'.php';
-    // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;
-}
+
 elseif (is_file('./src/View/User'.$class.'.php')) {
     include './src/View/User'.$class.'.php';
     // echo PHP_EOL."./src/View/".$class.".php".PHP_EOL;

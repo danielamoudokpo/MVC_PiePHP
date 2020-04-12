@@ -1,16 +1,17 @@
 <?php
 // namespace Controller;
 
-class UserController extends Core\Controller {
+class UserController extends \Core\Controller {
     public function __construct(){
 
-        $this->db = Core\Database::getConnection();
+        $this->db = \Core\Database::getConnection();
+        $this->request = new \Core\Request;
     }   
     // user/index
     public function indexAction(){       
     
-        $all = new UserModel($_POST);
-        $all->read(); 
+        $all = new \Model\UserModel($_POST);
+        // $all->read(); 
     }
     public function userpageAction(){
         
@@ -30,17 +31,15 @@ class UserController extends Core\Controller {
 
     public function createAction(){
 
-        $obj = new Core\Request;
-        $params = $obj->getQueryParams();
-        // $email ="test@gmailr.com";
-        // var_dump(($params));
-        $r = ['WHERE'=>'id = 3'];
-        $user = new UserModel($r);
+        $params = $this->request->getQueryParams();
+        // $r = ['WHERE'=>'id = 8'];
+        $user = new \Model\UserModel($params);
+        // $res = $user->find();
+        // $user->create();
         // $user->email_exit_check($email);
-      
-        $res = $user->find();
-
         // var_dump($res);
+
+       
 
     }
 }

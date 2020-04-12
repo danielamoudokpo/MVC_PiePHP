@@ -14,11 +14,9 @@ class Request{
 
         foreach ($this->request as $key => $value) {   
 
-            $value = trim($value);
-           $value = htmlspecialchars($value);
-           $value = stripslashes($value);
+            $val = trim(stripslashes(htmlspecialchars($value)));
 
-           $this->request[$key] = $value;
+           $this->request[$key] = $val;
         }
 
         // var_dump($this->request); 

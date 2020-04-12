@@ -1,15 +1,14 @@
 <?php
-// namespace Model;
+namespace Model; 
 
-
-class UserModel extends Core\Entity
+class UserModel extends \Core\Entity
 {
-
-    public $relation = [
-        "has_many"=>[
-            array("table"=> "article","key"=> "user_id")
-        ]
+    public $relations = [
+        'has_one' => ['table' => 'promo','key'=>'promo_id'],
+        'has_many' => ['table'=>'article','key'=>'user_id'],
+        'many_to_many' => ['table1' => 'user','table2' => 'food']
     ];
+
 
     public function email_exit_check($email){
 
@@ -28,7 +27,9 @@ class UserModel extends Core\Entity
         }
     }
 
-   
+    // public function read(){
+    //     echo ";o";
+    // }
 
 }
 
